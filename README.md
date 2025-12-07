@@ -1,17 +1,16 @@
-# Project-Java
 English: Platform to support digital transformation for household businesses.
 ● Vietnamese: Nền tảng hỗ trợ chuyển đổi số cho hộ kinh doanh.
 ● Abbreviation: BizFlow
 a. Context:
-In Vietnam, household businesses play a critical role in the local economy, especially in traditional sectors such as building materials, construction supplies, and hardware retail. The majority of these fall under Group 1 or Group 2 classifications as defined by the Ministry of Finance's Decision 3389/QĐ-BTC (2025).
-Consequently, most of these businesses still operate using fully manual workflows. Daily tasks such as recording sales, managing inventory, tracking customer debts, and processing phone/Zalo orders are typically performed with handwritten notebooks or simple Excel files. Moreover, household businesses often lack the budget to hire accountants.
-Despite the rapidly growing demand for digital transformation across industries, existing commercial POS or business management solutions are often designed for restaurants, retail fashion, or large enterprises. These systems fail to meet the unique operational characteristics of household businesses, which include:
-Multi-channel orders (at-counter sales and phone/Zalo orders).
-Customer debt management with long-term transaction history.
-Low digital literacy among store owners.
-Most household businesses also lack the essential hardware required to adopt existing digital solutions. Many operate with only a single smartphone, without computers, barcode scanners, receipt printers, POS terminals, or cash drawers. This limitation makes POS systems impractical, as such solutions typically require multiple devices and a stable hardware setup. The high upfront cost of purchasing these devices further prevents household businesses from transitioning to digital workflows, forcing them to continue relying on fully manual processes.
-Due to the lack of a specialized platform, household businesses face several challenges: frequent errors in manual calculations, slow order processing, difficulty tracking inventory, inconsistent debt records, and no access to real-time business insights. The result is reduced operational efficiency, financial risks, and an inability to scale or modernize business operations.
-To address this gap, we propose developing a Platform to support digital transformation for household businesses, a comprehensive system designed specifically for traditional stores. The platform integrates an interface with an AI-powered assistant capable of understanding natural language requests (via text or voice) to automatically create draft orders and auto fill data into templates. This combination supports automation, reduces human errors, and provides business owners with real-time visibility into their operations.
+● In Vietnam, household businesses play a critical role in the local economy, especially in traditional sectors such as building materials, construction supplies, and hardware retail. The majority of these fall under Group 1 or Group 2 classifications as defined by the Ministry of Finance's Decision 3389/QĐ-BTC (2025).
+● Consequently, most of these businesses still operate using fully manual workflows. Daily tasks such as recording sales, managing inventory, tracking customer debts, and processing phone/Zalo orders are typically performed with handwritten notebooks or simple Excel files. Moreover, household businesses often lack the budget to hire accountants.
+● Despite the rapidly growing demand for digital transformation across industries, existing commercial POS or business management solutions are often designed for restaurants, retail fashion, or large enterprises. These systems fail to meet the unique operational characteristics of household businesses, which include:
+○ Multi-channel orders (at-counter sales and phone/Zalo orders).
+○ Customer debt management with long-term transaction history.
+○ Low digital literacy among store owners.
+● Most household businesses also lack the essential hardware required to adopt existing digital solutions. Many operate with only a single smartphone, without computers, barcode scanners, receipt printers, POS terminals, or cash drawers. This limitation makes POS systems impractical, as such solutions typically require multiple devices and a stable hardware setup. The high upfront cost of purchasing these devices further prevents household businesses from transitioning to digital workflows, forcing them to continue relying on fully manual processes.
+● Due to the lack of a specialized platform, household businesses face several challenges: frequent errors in manual calculations, slow order processing, difficulty tracking inventory, inconsistent debt records, and no access to real-time business insights. The result is reduced operational efficiency, financial risks, and an inability to scale or modernize business operations.
+● To address this gap, we propose developing a Platform to support digital transformation for household businesses, a comprehensive system designed specifically for traditional stores. The platform integrates an interface with an AI-powered assistant capable of understanding natural language requests (via text or voice) to automatically create draft orders and auto fill data into templates. This combination supports automation, reduces human errors, and provides business owners with real-time visibility into their operations.
 b. Proposed Solutions:
 Build an application (mobile and/or web) that supports the following core functionalities:
 ● Employee:
@@ -60,26 +59,26 @@ Administrator:
 ● System & AI Configuration: Admins can manage global system settings. Updating the master templates for financial reports (Circular 88/2021/TT-BTC), and broadcasting system-wide announcements.
 ● Non - functional requirements:
 1. Security & Privacy
-Protect the sales information of household businesses.
-Strict role-based access control for Employee, Owner, and Admin roles.
+● Protect the sales information of household businesses.
+● Strict role-based access control for Employee, Owner, and Admin roles.
 
 2. Performance & Scalability
-Application responds quickly (< 2000 ms for core actions).
-Supports large product catalogs and multiple concurrent users.
+● Application responds quickly (< 2000 ms for core actions).
+● Supports large product catalogs and multiple concurrent users.
 
 3. Reliability & AI Accuracy
-Employees or owners can review, edit, or reject AI-generated draft orders.
-Fall back to manual operation if AI is unavailable.
+● Employees or owners can review, edit, or reject AI-generated draft orders.
+● Fall back to manual operation if AI is unavailable.
 
 4. Usability & Accessibility
-Simple, responsive web/mobile UI suitable for low digital literacy.
-Vietnamese interface; Unicode preserved.
-Real-time notifications.
+● Simple, responsive web/mobile UI suitable for low digital literacy.
+● Vietnamese interface; Unicode preserved.
+● Real-time notifications.
 
 5. Compliance & Reporting
-Automatically generates accounting reports following Circular 88/2021/TT-BTC.
-Owners can review, edit, or reject AI-generated reports.
-The platform guarantees that all accounting report templates will be continuously updated to align with any future changes in the official declaration forms issued by the tax authorities.
+● Automatically generates accounting reports following Circular 88/2021/TT-BTC.
+● Owners can review, edit, or reject AI-generated reports.
+● The platform guarantees that all accounting report templates will be continuously updated to align with any future changes in the official declaration forms issued by the tax authorities.
 
 (*) 3.2. Main Proposal Content (including result and product)
 a. Theory and Practice (Document):
@@ -108,7 +107,7 @@ b. Products:
 ● Mobile application
 ● Web application
 c. Proposed Tasks:
-Task Package 1: Deploy databases (MySQL and PostgreSQL)
-Task Package 2: Set up clean architecture with Java Spring Boot
-Task Package 3: Develop and deploy the mobile application using Flutter
-Task Package 4: Develop and deploy the web application
+● Task Package 1: Deploy databases (MySQL and PostgreSQL)
+● Task Package 2: Set up clean architecture with Java Spring Boot
+● Task Package 3: Develop and deploy the mobile application using Flutter
+● Task Package 4: Develop and deploy the web application
