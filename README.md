@@ -107,8 +107,8 @@ b. Products:
 ● Mobile application
 ● Web application
 c. Proposed Tasks:
-● Task Package 1: Deploy databases (MySQL and PostgreSQL)
 
+● Task Package 1: Deploy databases (MySQL and PostgreSQL)
 ● Task Package 2: Set up clean architecture with Java Spring Boot
 
 ● Task Package 3: Develop and deploy the mobile application using Flutter
