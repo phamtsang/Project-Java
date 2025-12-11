@@ -1,211 +1,283 @@
-English: Platform to support digital transformation for household businesses.
+● English: Platform to support digital transformation for household businesses.
 
 ● Vietnamese: Nền tảng hỗ trợ chuyển đổi số cho hộ kinh doanh.
 
-● Abbreviation: BizFlow
+● Viết tắt: BizFlow
 
-a. Context:
+a. Bối cảnh
 
-● In Vietnam, household businesses play a critical role in the local economy, especially in traditional sectors such as building materials, construction supplies, and hardware retail. The majority of these fall under Group 1 or Group 2 classifications as defined by the Ministry of Finance's Decision 3389/QĐ-BTC (2025).
+Tại Việt Nam, hộ kinh doanh đóng vai trò quan trọng trong nền kinh tế, đặc biệt trong các ngành truyền thống như vật liệu xây dựng, cung cấp đồ xây dựng, thiết bị – phụ kiện kim khí. Phần lớn các hộ này thuộc Nhóm 1 hoặc Nhóm 2 theo Quyết định 3389/QĐ-BTC (2025) của Bộ Tài chính.
 
-● Consequently, most of these businesses still operate using fully manual workflows. Daily tasks such as recording sales, managing inventory, tracking customer debts, and processing phone/Zalo orders are typically performed with handwritten notebooks or simple Excel files. Moreover, household businesses often lack the budget to hire accountants.
+Tuy nhiên, đa số các hộ kinh doanh vẫn vận hành hoàn toàn thủ công. Những công việc hằng ngày như:
 
-● Despite the rapidly growing demand for digital transformation across industries, existing commercial POS or business management solutions are often designed for restaurants, retail fashion, or large enterprises. These systems fail to meet the unique operational characteristics of household businesses, which include:
+Ghi đơn bán hàng
 
-○ Multi-channel orders (at-counter sales and phone/Zalo orders).
+Quản lý tồn kho
 
-○ Customer debt management with long-term transaction history.
+Theo dõi công nợ khách hàng
 
-○ Low digital literacy among store owners.
+Nhận đơn qua điện thoại/Zalo
 
-● Most household businesses also lack the essential hardware required to adopt existing digital solutions. Many operate with only a single smartphone, without computers, barcode scanners, receipt printers, POS terminals, or cash drawers. This limitation makes POS systems impractical, as such solutions typically require multiple devices and a stable hardware setup. The high upfront cost of purchasing these devices further prevents household businesses from transitioning to digital workflows, forcing them to continue relying on fully manual processes.
+…thường được ghi chép bằng sổ tay, hoặc file Excel đơn giản. Họ cũng không đủ ngân sách để thuê kế toán chuyên trách.
 
-● Due to the lack of a specialized platform, household businesses face several challenges: frequent errors in manual calculations, slow order processing, difficulty tracking inventory, inconsistent debt records, and no access to real-time business insights. The result is reduced operational efficiency, financial risks, and an inability to scale or modernize business operations.
+Dù nhu cầu chuyển đổi số trên thị trường tăng rất mạnh, đa số phần mềm POS và quản lý bán hàng hiện nay không phù hợp với đặc thù hộ kinh doanh, vì được thiết kế cho:
 
-● To address this gap, we propose developing a Platform to support digital transformation for household businesses, a comprehensive system designed specifically for traditional stores. The platform integrates an interface with an AI-powered assistant capable of understanding natural language requests (via text or voice) to automatically create draft orders and auto fill data into templates. This combination supports automation, reduces human errors, and provides business owners with real-time visibility into their operations.
+Nhà hàng
 
-b. Proposed Solutions:
-Build an application (mobile and/or web) that supports the following core functionalities:
+Thời trang – bán lẻ
 
-● Employee:
+Doanh nghiệp lớn
 
-○ They can login to the system.
+Trong khi hộ kinh doanh lại có các đặc điểm riêng:
 
-○ Create at-counter orders quickly (search products, add quantity, add customers details).
+Nhiều kênh bán: trực tiếp tại quầy + qua điện thoại/Zalo
 
-○ Print sales orders.
+Công nợ dài hạn, lịch sử giao dịch phức tạp
 
-○ Record debt for registered customers.
+Chủ cửa hàng có trình độ công nghệ thấp
 
-○ Receive real-time notifications for new orders.
+Ngoài ra, hầu hết các hộ thiếu hoàn toàn thiết bị phần cứng để dùng POS:
 
-○ View and confirm "Draft Orders" created by the AI.
+Không có máy tính
 
-● Owner:
+Không có máy quét mã vạch
 
-○ Includes all Employee permission.
+Không có máy in bill
 
-○ Manage product catalog (name, price, multiple units of measure).
+Chỉ có một chiếc điện thoại
 
-○ Manage inventory (new stock, view stock levels).
+Do đó, các giải pháp POS yêu cầu nhiều thiết bị trở nên không khả thi, chi phí đầu tư ban đầu cao, khiến họ buộc phải tiếp tục vận hành thủ công.
 
-○ Manage customers (info, purchase history, debt).
+Việc thiếu nền tảng phù hợp dẫn đến:
 
-○ View reports and analytics (daily/monthly revenue, best-sellers, outstanding debt).
+Ghi sai số liệu
 
-○ Manage employee accounts.
+Chậm xử lý đơn
 
-● Administrator:
+Khó kiểm soát tồn kho
 
-○ Manage owner accounts.
+Công nợ không rõ ràng
 
-○ View reports, analytics and feedback.
+Không có dữ liệu để theo dõi doanh thu – chi phí
 
-○ Manage Subscription Pricing.
+Hậu quả là hiệu quả kinh doanh giảm, rủi ro tài chính tăng, và không thể mở rộng hoặc hiện đại hóa cửa hàng.
 
-○ Update system config and templates for financial reports.
+Giải pháp đề xuất:
+Xây dựng Nền tảng hỗ trợ chuyển đổi số cho hộ kinh doanh, tích hợp AI xử lý ngôn ngữ tự nhiên (text/voice) để tự động tạo đơn nháp, tự động điền dữ liệu vào biểu mẫu, và hỗ trợ tự động hóa quy trình vận hành – kế toán.
 
-● System:
+b. Giải pháp đề xuất
 
-○ Convert natural language into draft order.
+Phát triển ứng dụng mobile và web, gồm các nhóm chức năng chính:
 
-○ It automatically does the bookkeeping.
+Chức năng theo vai trò
+1. Nhân viên (Employee)
 
-● Functional requirements:
+Đăng nhập hệ thống
 
-Employee:
+Tạo đơn bán tại quầy nhanh
 
-● Login: Employees can log in using an account.
+Tìm kiếm sản phẩm, chọn số lượng, thêm thông tin khách
 
-● Create At-Counter Orders: Employees can quickly create orders for walk-in customers. They can search for products, select quantity, assign customers (optional), and add items to the cart. The interface must support fast operations through keyboard shortcuts and instant product filtering.
+In hóa đơn
 
-● Record debt for registered customers: If the customer chooses to buy on credit, the Employee can record the debt directly during order creation. The system automatically updates the customer’s outstanding balance.
+Ghi công nợ khách quen
 
-● Print Sales Orders: After creating an order, the employee can generate and print orders using pre-designed bill templates. The system stores each order in the database for future retrieval.
+Nhận thông báo đơn mới từ AI
 
-● Receive Real-Time Notifications for AI/Chatbot Orders: When the AI assistant receives a message (text or voice) and generates a draft order, the interface will immediately display a real-time notification.
+Xem và xác nhận các Draft Orders do AI tạo
 
-● View and confirm "Draft Orders" created by the AI: The draft order will be sent to the employee for checking and confirmation.
-Owner (Owner includes all Employee functions, plus the following additional capabilities.):
+2. Chủ cửa hàng (Owner)
 
-● Manage Product Catalog: The owner can create, update, or disable products. They can define product attributes such as name, images, price, category, and multiple units of measure. Pricing rules can also be configured.
+(Bao gồm toàn bộ quyền của Employee + các quyền sau):
 
-● Manage Inventory: The owner can record stock imports, track stock levels in real time, and view inventory history. The system automatically deducts stock upon order confirmation.
+Quản lý danh mục sản phẩm
 
-● Manage Customers: The owner can add and update customer information, view their purchase history, track outstanding debts, and review payment logs.
+Tên, giá, hình ảnh, danh mục, nhiều đơn vị tính
 
-● View Reports & Analytics: Provides interactive dashboards that show daily/weekly/monthly revenue, top-selling products, low-stock alerts, and total outstanding debts. Data visualization supports charts and summary widgets.
+Quản lý tồn kho
 
-● Manage Employee Accounts: The owner can create new employee accounts, reset passwords and deactivate accounts. Audit logs track who made each change for accountability.
-System:
+Nhập hàng, xem tồn, lịch sử tồn
 
-● Convert natural language into draft order: It "listens" (or reads) what the user says (e.g., "get 5 cement bags for Mr. Ba, put it on his tab") and automatically creates a draft order from that command.
+Quản lý khách hàng
 
-●It automatically does the bookkeeping: The system automatically performs bookkeeping for every sale, stock import, and customer debt transaction. Based on this recorded data, it automatically calculates, summarizes, and populates the official accounting books and financial reports required by Circular 88/2021/TT-BTC (Vietnam's official accounting standard for household businesses). This feature eliminates all manual calculation and data entry in Excel, ensuring that reports (e.g., Detailed Revenue Ledger, Outstanding Debt Report, Business Operations Report) are accurate and legally compliant for tax purposes. The platform guarantees that these report templates will be continuously updated to align with the latest government regulations as they are issued, ensuring long-term compliance for the business owner.
-Administrator:
+Thông tin, lịch sử mua, công nợ, lịch sử thanh toán
 
-● Owner Account Management: Admins can view, search, filter, and manage all registered "Owner" (business household) accounts. This includes activating or deactivating accounts, and viewing detailed profiles.
+Xem báo cáo
 
-● Manage Subscription Pricing: Admins can define and update the pricing for the various subscription plans offered on the platform (e.g., set the monthly/annual cost for the Basic, Pro plans).
+Doanh thu ngày/tuần/tháng
 
-● Platform Analytics & Reporting: Admins can access a global dashboard to monitor the health, growth, and revenue of the entire platform. This includes viewing total active users, new subscriptions.
+Sản phẩm bán chạy
 
-● System & AI Configuration: Admins can manage global system settings. Updating the master templates for financial reports (Circular 88/2021/TT-BTC), and broadcasting system-wide announcements.
+Hàng sắp hết
 
-● Non - functional requirements:
+Tổng công nợ
 
-1. Security & Privacy
+Quản lý tài khoản nhân viên
 
-● Protect the sales information of household businesses.
+Tạo, đổi mật khẩu, vô hiệu hóa
 
-● Strict role-based access control for Employee, Owner, and Admin roles.
+Có nhật ký thao tác (audit log)
 
-2. Performance & Scalability
+3. Quản trị viên (Admin)
 
-● Application responds quickly (< 2000 ms for core actions).
+Quản lý tài khoản Owner
 
-● Supports large product catalogs and multiple concurrent users.
+Quản lý gói dịch vụ (subscription)
 
-3. Reliability & AI Accuracy
+Xem báo cáo tổng thể của toàn nền tảng
 
-● Employees or owners can review, edit, or reject AI-generated draft orders.
+Quản lý cấu hình hệ thống, template báo cáo tài chính
 
-● Fall back to manual operation if AI is unavailable.
+Gửi thông báo toàn hệ thống
 
-4. Usability & Accessibility
+4. Hệ thống (System)
+AI xử lý ngôn ngữ tự nhiên
 
-● Simple, responsive web/mobile UI suitable for low digital literacy.
+Ví dụ: “Lấy 5 bao xi măng cho anh Ba, ghi nợ giùm” → tự tạo đơn nháp.
 
-● Vietnamese interface; Unicode preserved.
+Tự động làm kế toán
 
-● Real-time notifications.
+Mỗi giao dịch bán hàng, nhập kho, công nợ được tự động ghi sổ
 
-5. Compliance & Reporting
+Tự lập báo cáo kế toán theo Thông tư 88/2021/TT-BTC
 
-● Automatically generates accounting reports following Circular 88/2021/TT-BTC.
+Luôn cập nhật biểu mẫu theo quy định mới của cơ quan thuế
 
-● Owners can review, edit, or reject AI-generated reports.
+Yêu cầu chức năng chi tiết
+Cho nhân viên
 
-● The platform guarantees that all accounting report templates will be continuously updated to align with any future changes in the official declaration forms issued by the tax authorities.
+Đăng nhập
 
-(*) 3.2. Main Proposal Content (including result and product)
+Tạo đơn tại quầy nhanh (tìm kiếm tức thì, phím tắt, lọc sản phẩm)
 
-a. Theory and Practice (Document):
+Ghi công nợ trực tiếp trên đơn
 
-● Students should apply the software development process and UML 2.0 to model the system.
+In đơn
 
-● The documentation includes:
+Nhận thông báo đơn từ AI
 
-○ User Requirement
+Xem & duyệt đơn nháp
 
-○ Software Requirement Specification
+Cho chủ cửa hàng
 
-○ Architecture Design
+Quản lý danh mục sản phẩm
 
-○ Detailed Design
+Quản lý tồn kho
 
-○ System Implementation
+Quản lý khách hàng
 
-○ Testing Document
+Xem báo cáo doanh thu – tồn kho – công nợ
 
-○ Installation Guide
+Quản lý nhân viên
 
-○ Source code and deployable software packages
+Cho hệ thống
 
-● Server-side technologies:
+Chuyển đổi ngôn ngữ tự nhiên thành đơn nháp
 
-○ Clean architecture implemented in Java Spring Boot
+Tự động hạch toán
 
-○ Data storage with MySQL and PostgreSQL
+Tự động sinh báo cáo kế toán chuẩn nhà nước
 
-○ Caching: Redis
+Cho admin
 
-● AI: Python
+Quản lý tài khoản owner
 
-○ RAG: ChromaDB, text-embedding-3-small
+Quản lý gói dịch vụ
 
-○ LLM: OpenAI/Gemini
+Thống kê toàn nền tảng
 
-○ Speech-to-Text: Google Speech-to-Text/Whisper
+Cập nhật cấu hình hệ thống và template báo cáo
 
-● Client-side technologies:
+Yêu cầu phi chức năng
+1. Bảo mật
 
-○ Mobile application: Flutter, Notification.
+Bảo vệ dữ liệu kinh doanh
 
-○ Web Client: NextJS, Tanstack Query, Shadcn UI, TailwindCSS
+Kiểm soát truy cập theo vai trò
 
-b. Products:
+2. Hiệu năng
 
-● Mobile application
+Phản hồi < 2000ms
 
-● Web application
+Hỗ trợ nhiều người dùng, danh mục lớn
 
-c. Proposed Tasks:
+3. Độ tin cậy
 
-● Task Package 1: Deploy databases (MySQL and PostgreSQL)
+Cho phép chỉnh sửa đơn AI tạo
 
-● Task Package 2: Set up clean architecture with Java Spring Boot
+Có chế độ thủ công khi AI lỗi
 
-● Task Package 3: Develop and deploy the mobile application using Flutter
+4. Dễ dùng
 
-● Task Package 4: Develop and deploy the web application
+Giao diện đơn giản, hỗ trợ người ít hiểu công nghệ
+
+Tiếng Việt đầy đủ
+
+Thông báo thời gian thực
+
+5. Tuân thủ pháp lý
+
+Báo cáo kế toán theo Thông tư 88
+
+Tự động cập nhật khi biểu mẫu nhà nước thay đổi
+
+3.2. Nội dung đề tài
+a. Hồ sơ lý thuyết & thực tiễn (Document)
+
+Sinh viên áp dụng quy trình phát triển phần mềm + mô hình UML 2.0, gồm:
+
+User Requirement
+
+SRS
+
+Thiết kế kiến trúc
+
+Thiết kế chi tiết
+
+Triển khai hệ thống
+
+Tài liệu kiểm thử
+
+Hướng dẫn cài đặt
+
+Mã nguồn + gói triển khai
+
+Công nghệ server
+
+Java Spring Boot (Clean Architecture)
+
+MySQL + PostgreSQL
+
+Redis (cache)
+
+AI
+
+Python
+
+RAG: ChromaDB + text-embedding-3-small
+
+LLM: OpenAI/Gemini
+
+Speech-to-Text: Google STT / Whisper
+
+Client
+
+Mobile: Flutter (có Notification)
+
+Web: NextJS, TanStack Query, Shadcn, Tailwind
+
+b. Sản phẩm
+
+Ứng dụng mobile
+
+Ứng dụng web
+
+c. Các gói công việc chính
+
+Gói 1: Triển khai database (MySQL + PostgreSQL)
+
+Gói 2: Thiết lập kiến trúc Spring Boot
+
+Gói 3: Phát triển ứng dụng mobile bằng Flutter
+
+Gói 4: Phát triển ứng dụng web
