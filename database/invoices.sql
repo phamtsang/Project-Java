@@ -29,7 +29,12 @@ CREATE TABLE `invoices` (
   `total_amount` decimal(12,2) NOT NULL,
   `discount` decimal(12,2) DEFAULT '0.00',
   `final_amount` decimal(12,2) NOT NULL,
-  `payment_method` enum('CASH','BANK','EWALLET') NOT NULL,
+   -- Cột mới: Số tiền khách đã thanh toán trong giao dịch này
+  `paid_amount` decimal(12,2) NOT NULL DEFAULT '0.00', 
+  -- Sửa đổi: Thêm giá trị DEBT vào ENUM để phân loại hóa đơn ghi nợ
+ `payment_method` enum('CASH','BANK','EWALLET','DEBT') NOT NULL, 
+    -- Cột mới: Trạng thái công nợ của hóa đơn
+  `debt_status` enum('PAID_FULL','OWING','OVERDUE') NOT NULL DEFAULT 'PAID_FULL',
   `created_by` bigint NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
