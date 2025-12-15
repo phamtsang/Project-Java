@@ -16,20 +16,23 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `categories`
+-- Table structure for table `accounting_journals`
 --
 
-DROP TABLE IF EXISTS `categories`;
+DROP TABLE IF EXISTS `accounting_journals`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `categories` (
+CREATE TABLE `accounting_journals` (
   `id` int NOT NULL AUTO_INCREMENT,
   `store_id` int NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `transaction_date` date NOT NULL,
   `description` text,
+  `reference_type` varchar(50) DEFAULT NULL,
+  `reference_id` int DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `store_id` (`store_id`),
-  CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `accounting_journals_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -42,4 +45,4 @@ CREATE TABLE `categories` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-15 12:57:46
+-- Dump completed on 2025-12-15 12:57:45

@@ -16,31 +16,22 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `business_staff`
+-- Table structure for table `stores`
 --
 
-DROP TABLE IF EXISTS `business_staff`;
+DROP TABLE IF EXISTS `stores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `business_staff` (
-  `business_id` bigint NOT NULL,
-  `user_id` bigint NOT NULL,
-  `role` enum('STAFF','MANAGER') NOT NULL,
-  PRIMARY KEY (`business_id`,`user_id`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `business_staff_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `businesses` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `business_staff_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+CREATE TABLE `stores` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `subscription_plan` varchar(50) DEFAULT 'FREE',
+  `subscription_end_date` datetime DEFAULT NULL,
+  `status` varchar(20) DEFAULT 'ACTIVE',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `business_staff`
---
-
-LOCK TABLES `business_staff` WRITE;
-/*!40000 ALTER TABLE `business_staff` DISABLE KEYS */;
-/*!40000 ALTER TABLE `business_staff` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -51,4 +42,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-08 19:59:04
+-- Dump completed on 2025-12-15 12:57:46

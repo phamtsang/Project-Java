@@ -16,36 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `expenses`
+-- Table structure for table `order_items`
 --
 
-DROP TABLE IF EXISTS `expenses`;
+DROP TABLE IF EXISTS `order_items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `expenses` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `business_id` bigint NOT NULL,
-  `category` varchar(255) NOT NULL,
-  `amount` decimal(12,2) NOT NULL,
-  `note` text,
-  `created_by` bigint DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE `order_items` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `product_unit_id` int NOT NULL,
+  `quantity` decimal(10,2) NOT NULL,
+  `unit_price` decimal(15,2) NOT NULL,
+  `total_price` decimal(15,2) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `business_id` (`business_id`),
-  KEY `created_by` (`created_by`),
-  CONSTRAINT `expenses_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `businesses` (`id`),
-  CONSTRAINT `expenses_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`)
+  KEY `order_id` (`order_id`),
+  KEY `product_unit_id` (`product_unit_id`),
+  CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_unit_id`) REFERENCES `product_units` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `expenses`
---
-
-LOCK TABLES `expenses` WRITE;
-/*!40000 ALTER TABLE `expenses` DISABLE KEYS */;
-/*!40000 ALTER TABLE `expenses` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -56,4 +46,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-08 19:59:04
+-- Dump completed on 2025-12-15 12:57:46

@@ -16,45 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `invoices`
+-- Table structure for table `accounting_entries`
 --
 
-DROP TABLE IF EXISTS `invoices`;
+DROP TABLE IF EXISTS `accounting_entries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `invoices` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `business_id` bigint NOT NULL,
-  `customer_id` bigint DEFAULT NULL,
-  `total_amount` decimal(12,2) NOT NULL,
-  `discount` decimal(12,2) DEFAULT '0.00',
-  `final_amount` decimal(12,2) NOT NULL,
-   -- Cột mới: Số tiền khách đã thanh toán trong giao dịch này
-  `paid_amount` decimal(12,2) NOT NULL DEFAULT '0.00', 
-  -- Sửa đổi: Thêm giá trị DEBT vào ENUM để phân loại hóa đơn ghi nợ
- `payment_method` enum('CASH','BANK','EWALLET','DEBT') NOT NULL, 
-    -- Cột mới: Trạng thái công nợ của hóa đơn
-  `debt_status` enum('PAID_FULL','OWING','OVERDUE') NOT NULL DEFAULT 'PAID_FULL',
-  `created_by` bigint NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE `accounting_entries` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `journal_id` int NOT NULL,
+  `account_code` varchar(20) NOT NULL,
+  `debit_amount` decimal(15,2) DEFAULT '0.00',
+  `credit_amount` decimal(15,2) DEFAULT '0.00',
+  `note` text,
   PRIMARY KEY (`id`),
-  KEY `business_id` (`business_id`),
-  KEY `customer_id` (`customer_id`),
-  KEY `created_by` (`created_by`),
-  CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `businesses` (`id`),
-  CONSTRAINT `invoices_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`),
-  CONSTRAINT `invoices_ibfk_3` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`)
+  KEY `journal_id` (`journal_id`),
+  KEY `account_code` (`account_code`),
+  CONSTRAINT `accounting_entries_ibfk_1` FOREIGN KEY (`journal_id`) REFERENCES `accounting_journals` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `accounting_entries_ibfk_2` FOREIGN KEY (`account_code`) REFERENCES `accounting_accounts` (`code`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `invoices`
---
-
-LOCK TABLES `invoices` WRITE;
-/*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
-/*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -65,4 +46,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-08 19:59:05
+-- Dump completed on 2025-12-15 12:57:45

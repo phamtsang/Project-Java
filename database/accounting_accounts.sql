@@ -16,35 +16,19 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `businesses`
+-- Table structure for table `accounting_accounts`
 --
 
-DROP TABLE IF EXISTS `businesses`;
+DROP TABLE IF EXISTS `accounting_accounts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `businesses` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `owner_id` bigint NOT NULL,
+CREATE TABLE `accounting_accounts` (
+  `code` varchar(20) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `address` text,
-  `phone` varchar(20) DEFAULT NULL,
-  `tax_code` varchar(50) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `owner_id` (`owner_id`),
-  CONSTRAINT `businesses_ibfk_1` FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`)
+  `type` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `businesses`
---
-
-LOCK TABLES `businesses` WRITE;
-/*!40000 ALTER TABLE `businesses` DISABLE KEYS */;
-/*!40000 ALTER TABLE `businesses` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -55,4 +39,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-08 19:59:04
+-- Dump completed on 2025-12-15 12:57:45

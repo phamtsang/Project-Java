@@ -16,20 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `categories`
+-- Table structure for table `audit_logs`
 --
 
-DROP TABLE IF EXISTS `categories`;
+DROP TABLE IF EXISTS `audit_logs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `categories` (
+CREATE TABLE `audit_logs` (
   `id` int NOT NULL AUTO_INCREMENT,
   `store_id` int NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` text,
+  `user_id` int NOT NULL,
+  `action` varchar(100) NOT NULL,
+  `entity_name` varchar(50) DEFAULT NULL,
+  `entity_id` int DEFAULT NULL,
+  `old_value` text,
+  `new_value` text,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `store_id` (`store_id`),
-  CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `audit_logs_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `audit_logs_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

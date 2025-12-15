@@ -16,35 +16,23 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `invoice_items`
+-- Table structure for table `inventory`
 --
 
-DROP TABLE IF EXISTS `invoice_items`;
+DROP TABLE IF EXISTS `inventory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `invoice_items` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `invoice_id` bigint NOT NULL,
-  `product_id` bigint NOT NULL,
-  `quantity` decimal(12,2) NOT NULL,
-  `price` decimal(12,2) NOT NULL,
-  `line_total` decimal(12,2) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `invoice_id` (`invoice_id`),
-  KEY `product_id` (`product_id`),
-  CONSTRAINT `invoice_items_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `invoice_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
+CREATE TABLE `inventory` (
+  `product_id` int NOT NULL,
+  `store_id` int NOT NULL,
+  `quantity_on_hand` decimal(15,2) DEFAULT '0.00',
+  `last_updated` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`product_id`,`store_id`),
+  KEY `store_id` (`store_id`),
+  CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `inventory_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `invoice_items`
---
-
-LOCK TABLES `invoice_items` WRITE;
-/*!40000 ALTER TABLE `invoice_items` DISABLE KEYS */;
-/*!40000 ALTER TABLE `invoice_items` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -55,4 +43,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-08 19:59:04
+-- Dump completed on 2025-12-15 12:57:46
