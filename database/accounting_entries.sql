@@ -46,4 +46,4 @@ CREATE TABLE `accounting_entries` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-15 12:57:45
+-- Dump completed on 2025-12-17 20:54:07

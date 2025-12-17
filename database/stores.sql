@@ -25,11 +25,13 @@ DROP TABLE IF EXISTS `stores`;
 CREATE TABLE `stores` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `subscription_plan` varchar(50) DEFAULT 'FREE',
   `subscription_end_date` datetime DEFAULT NULL,
   `status` varchar(20) DEFAULT 'ACTIVE',
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  `subscription_plan_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_store_plan` (`subscription_plan_id`),
+  CONSTRAINT `fk_store_plan` FOREIGN KEY (`subscription_plan_id`) REFERENCES `subscription_plans` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -42,4 +44,4 @@ CREATE TABLE `stores` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-15 12:57:46
+-- Dump completed on 2025-12-17 20:54:08

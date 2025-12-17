@@ -16,21 +16,19 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `inventory`
+-- Table structure for table `subscription_plans`
 --
 
-DROP TABLE IF EXISTS `inventory`;
+DROP TABLE IF EXISTS `subscription_plans`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `inventory` (
-  `product_id` int NOT NULL,
-  `store_id` int NOT NULL,
-  `quantity_on_hand` decimal(15,2) DEFAULT '0.00',
-  `last_updated` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`product_id`,`store_id`),
-  KEY `store_id` (`store_id`),
-  CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `inventory_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `subscription_plans` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `price` decimal(15,2) NOT NULL,
+  `description` text,
+  `max_orders_per_month` int DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -43,4 +41,4 @@ CREATE TABLE `inventory` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-17 20:54:08
+-- Dump completed on 2025-12-17 20:54:07
