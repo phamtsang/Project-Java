@@ -16,17 +16,23 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `accounting_accounts`
+-- Table structure for table `product_units`
 --
 
-DROP TABLE IF EXISTS `accounting_accounts`;
+DROP TABLE IF EXISTS `product_units`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `accounting_accounts` (
-  `code` varchar(20) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `type` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`code`)
+CREATE TABLE `product_units` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int NOT NULL,
+  `unit_name` varchar(50) NOT NULL,
+  `conversion_rate` int DEFAULT '1',
+  `price` decimal(15,2) NOT NULL,
+  `barcode` varchar(50) DEFAULT NULL,
+  `is_base_unit` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `product_id` (`product_id`),
+  CONSTRAINT `product_units_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -39,4 +45,4 @@ CREATE TABLE `accounting_accounts` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-17 20:54:07
+-- Dump completed on 2025-12-25  1:31:19

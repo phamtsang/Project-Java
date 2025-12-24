@@ -16,24 +16,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `accounting_entries`
+-- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `accounting_entries`;
+DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `accounting_entries` (
+CREATE TABLE `categories` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `journal_id` int NOT NULL,
-  `account_code` varchar(20) NOT NULL,
-  `debit_amount` decimal(15,2) DEFAULT '0.00',
-  `credit_amount` decimal(15,2) DEFAULT '0.00',
-  `note` text,
+  `store_id` int NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text,
   PRIMARY KEY (`id`),
-  KEY `journal_id` (`journal_id`),
-  KEY `account_code` (`account_code`),
-  CONSTRAINT `accounting_entries_ibfk_1` FOREIGN KEY (`journal_id`) REFERENCES `accounting_journals` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `accounting_entries_ibfk_2` FOREIGN KEY (`account_code`) REFERENCES `accounting_accounts` (`code`) ON DELETE RESTRICT ON UPDATE CASCADE
+  KEY `store_id` (`store_id`),
+  CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -46,4 +42,4 @@ CREATE TABLE `accounting_entries` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-17 20:54:07
+-- Dump completed on 2025-12-25  1:31:18

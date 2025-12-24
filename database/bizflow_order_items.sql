@@ -16,20 +16,24 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `categories`
+-- Table structure for table `order_items`
 --
 
-DROP TABLE IF EXISTS `categories`;
+DROP TABLE IF EXISTS `order_items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `categories` (
+CREATE TABLE `order_items` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `store_id` int NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` text,
+  `order_id` int NOT NULL,
+  `product_unit_id` int NOT NULL,
+  `quantity` decimal(10,2) NOT NULL,
+  `unit_price` decimal(15,2) NOT NULL,
+  `total_price` decimal(15,2) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `store_id` (`store_id`),
-  CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `order_id` (`order_id`),
+  KEY `product_unit_id` (`product_unit_id`),
+  CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_unit_id`) REFERENCES `product_units` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -42,4 +46,4 @@ CREATE TABLE `categories` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-17 20:54:08
+-- Dump completed on 2025-12-25  1:31:19

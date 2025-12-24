@@ -16,23 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `accounting_journals`
+-- Table structure for table `debt_transactions`
 --
 
-DROP TABLE IF EXISTS `accounting_journals`;
+DROP TABLE IF EXISTS `debt_transactions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `accounting_journals` (
+CREATE TABLE `debt_transactions` (
   `id` int NOT NULL AUTO_INCREMENT,
   `store_id` int NOT NULL,
-  `transaction_date` date NOT NULL,
-  `description` text,
-  `reference_type` varchar(50) DEFAULT NULL,
-  `reference_id` int DEFAULT NULL,
+  `customer_id` int NOT NULL,
+  `user_id` int DEFAULT NULL,
+  `amount` decimal(15,2) NOT NULL,
+  `transaction_type` varchar(50) NOT NULL,
+  `order_id` int DEFAULT NULL,
+  `note` text,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `store_id` (`store_id`),
-  CONSTRAINT `accounting_journals_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `customer_id` (`customer_id`),
+  KEY `user_id` (`user_id`),
+  KEY `order_id` (`order_id`),
+  CONSTRAINT `debt_transactions_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `debt_transactions_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `debt_transactions_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `debt_transactions_ibfk_4` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -45,4 +53,4 @@ CREATE TABLE `accounting_journals` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-17 20:54:09
+-- Dump completed on 2025-12-25  1:31:18

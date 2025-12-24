@@ -16,25 +16,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `products`
+-- Table structure for table `inventory`
 --
 
-DROP TABLE IF EXISTS `products`;
+DROP TABLE IF EXISTS `inventory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `products` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `inventory` (
+  `product_id` int NOT NULL,
   `store_id` int NOT NULL,
-  `category_id` int DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `image_url` text,
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
+  `quantity_on_hand` decimal(15,2) DEFAULT '0.00',
+  `last_updated` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`product_id`,`store_id`),
   KEY `store_id` (`store_id`),
-  KEY `category_id` (`category_id`),
-  CONSTRAINT `products_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `products_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+  CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `inventory_ibfk_2` FOREIGN KEY (`store_id`) REFERENCES `stores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +43,4 @@ CREATE TABLE `products` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-17 20:54:08
+-- Dump completed on 2025-12-25  1:31:18
