@@ -34,16 +34,49 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllPlans());
     }
 
-    // Cập nhật gói (Mới thêm)
+    // Cập nhật gói
     @PutMapping("/plans/{id}")
     public ResponseEntity<SubscriptionPlan> updatePlan(@PathVariable Long id, @RequestBody SubscriptionPlan plan) {
         return ResponseEntity.ok(adminService.updatePlan(id, plan));
     }
 
-    // Xóa gói (Mới thêm)
+    // Xóa gói
     @DeleteMapping("/plans/{id}")
     public ResponseEntity<String> deletePlan(@PathVariable Long id) {
         adminService.deletePlan(id);
         return ResponseEntity.ok("Đã xóa Gói dịch vụ thành công");
     }
 }
+
+    // ==========================================
+    //  QUẢN LÝ TÀI KHOẢN OWNER (CHỦ SHOP)
+    // ==========================================
+
+    // Đăng ký Owner mới (kèm tạo Store)
+    @PostMapping("/owners")
+    public ResponseEntity<User> createOwner(@RequestParam String phone,
+                                            @RequestParam String name,
+                                            @RequestParam String password,
+                                            @RequestParam String storeName,
+                                            @RequestParam Long planId) {
+        return ResponseEntity.ok(adminService.registerOwner(phone, name, password, storeName, planId));
+    }
+
+    // Xem danh sách Owner
+    @GetMapping("/owners")
+    public ResponseEntity<List<User>> getAllOwners() {
+    return ResponseEntity.ok(adminService.getAllOwners());
+}
+
+    // Khóa/Mở khóa Owner
+    @PutMapping("/owners/{id}/status")
+    public ResponseEntity<User> updateStatus(@PathVariable Long id, @RequestParam String status) {
+        return ResponseEntity.ok(adminService.updateOwnerStatus(id, status));
+    }
+
+    // Xóa Owner
+    @DeleteMapping("/owners/{id}")
+    public ResponseEntity<String> deleteOwner(@PathVariable Long id) {
+        adminService.deleteOwner(id);
+        return ResponseEntity.ok("Đã xóa Owner và Cửa hàng thành công");
+    }
