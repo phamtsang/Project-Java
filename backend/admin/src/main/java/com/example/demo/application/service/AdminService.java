@@ -11,9 +11,13 @@ import java.util.List;
 @Service
 public class AdminService {
 
+    @Autowired private UserRepository userRepository;
+    @Autowired private StoreRepository storeRepository;
     @Autowired private SubscriptionPlanRepository planRepository;
+    @Autowired private SystemConfigRepository configRepository;
+    @Autowired private SystemNotificationRepository notiRepository;
 
-    // --- 1. QUẢN LÝ GÓI DỊCH VỤ (Subscription) ---
+    // --- QUẢN LÝ GÓI DỊCH VỤ (Subscription) ---
 
     public SubscriptionPlan createPlan(SubscriptionPlan plan) { return planRepository.save(plan); }
     public List<SubscriptionPlan> getAllPlans() { return planRepository.findAll(); }
@@ -30,16 +34,15 @@ public class AdminService {
     // XÓA Gói
     public void deletePlan(Long id) {
         // Kiểm tra xem có cửa hàng nào đang dùng gói này không trước khi xóa
-        if (storeRepository.existsBySubscriptionPlanId(id)) { // Cần thêm hàm này trong Repo
+        if (storeRepository.existsBySubscriptionPlanId(id)) {
             throw new RuntimeException("Không thể xóa gói đang có người sử dụng!");
         }
         planRepository.deleteById(id);
     }
-}
 
-    // --- 2. QUẢN LÝ TÀI KHOẢN OWNER (Full CRUD) ---
+    // --- QUẢN LÝ TÀI KHOẢN OWNER (Full CRUD) ---
 
-    // Tạo (Đã có)
+    // Tạo store, owner
     @Transactional
     public User registerOwner(String phone, String fullName, String rawPassword, String storeName, Long planId) {
         if (userRepository.existsByUsername(phone)) throw new RuntimeException("SĐT đã tồn tại");
@@ -77,3 +80,32 @@ public class AdminService {
             storeRepository.delete(store);
         }
     }
+
+
+    // --- QUẢN LÝ CẤU HÌNH & TEMPLATE BÁO CÁO ---
+
+    public SystemConfig saveConfig(SystemConfig config) {
+        return configRepository.save(config);
+    }
+
+    public List<SystemConfig> getAllConfigs() {
+        return configRepository.findAll();
+    }
+
+    // --- GỬI THÔNG BÁO TOÀN HỆ THỐNG ---
+
+    public SystemNotification createBroadcastNotification(String title, String message) {
+        SystemNotification noti = SystemNotification.builder()
+                .title(title)
+                .message(message)
+                .type("INFO")
+                .isBroadcast(true)
+                .build();
+        return notiRepository.save(noti);
+    }
+
+    // --- BÁO CÁO TỔNG QUAN ---
+    public String getSystemOverview() {
+        return "Stores: " + storeRepository.count() + " | Owners: " + userRepository.findByRole(Role.OWNER).size();
+    }
+}
